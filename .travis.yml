@@ -4,6 +4,6 @@ os: linux
 dist: bionic
 language: shell
 
-script: make build
+script: make image
 env:
     - BUILDARCH=armv71 MAKE_BRANCH=arm32v7
