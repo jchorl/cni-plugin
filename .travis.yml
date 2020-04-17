@@ -1,0 +1,7 @@
+arch:
+- arm64
+os: linux
+dist: bionic
+language: shell
+
+script: make build
