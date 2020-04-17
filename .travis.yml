@@ -6,7 +6,7 @@ language: shell
 script: make image
 deploy:
 - provider: script
-  script: scripts/deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD
+  script: deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD
   on:
     branch: master
 env:
