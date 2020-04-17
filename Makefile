@@ -11,7 +11,7 @@ PUSH_IMAGES?=$(BUILD_IMAGE) quay.io/calico/cni
 #   that variable is evaluated when we declare DOCKER_RUN and siblings.
 ###############################################################################
 MAKE_BRANCH?=$(GO_BUILD_VER)
-MAKE_REPO?=https://raw.githubusercontent.com/projectcalico/go-build/$(MAKE_BRANCH)
+MAKE_REPO?=https://raw.githubusercontent.com/jchorl/go-build/$(MAKE_BRANCH)
 
 Makefile.common: Makefile.common.$(MAKE_BRANCH)
 	cp "$<" "$@"

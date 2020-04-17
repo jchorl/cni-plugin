@@ -5,3 +5,5 @@ dist: bionic
 language: shell
 
 script: make build
+env:
+    - BUILDARCH=armv71 MAKE_BRANCH=jchorl/arm32v7
