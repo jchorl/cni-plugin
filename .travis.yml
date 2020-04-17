@@ -1,9 +1,20 @@
 arch:
-- arm64
+- amd64
 os: linux
 dist: bionic
 language: shell
-script: make image
+
+jobs:
+  include:
+  - script:
+    - make image
+    env:
+    - MAKE_BRANCH=arm32v7 BUILD_IMAGE=jchorl/cni
+  - arch: arm64
+    script:
+    - make image
+    env:
+    - BUILDARCH=armv71 MAKE_BRANCH=arm32v7 BUILD_IMAGE=jchorl/cni
 deploy:
 - provider: script
   script: bash deploy.sh $DOCKER_USERNAME $DOCKER_PASSWORD
@@ -11,7 +22,6 @@ deploy:
     branch: master
 env:
   matrix:
-  - BUILDARCH=armv71 MAKE_BRANCH=arm32v7 BUILD_IMAGE=jchorl/cni
   global:
   - DOCKER_USERNAME=jchorl
   - secure: p+QHW0s2CveY2/b6nY9H3FxrdE90k+TGq1oDZbvqk9PmgTq+Wlq+uGCJZkLyQdoJvQdMOKjipNiahDXbgUvr8wgQQuilZsz0GehXB5oW7QUbC5lVdeCqwsONvRco9QkcoylQP4B259uJ/nMVFqgC58EVIUk4zdLmVObD4o8R5A0Wtb6YHijpkJokkdz1nCvhtFMegsVDc7Y7NmuhR12Ld8IpiKwUrEgz+TnX4GIxcxN0f9E6zZIHRN5+6OIZ4hp8DDPWX6+ZbqWpYtQ7KurcjMfJDTMdbf05upNcpbiMLa7AfYgcDUp9r+7Dwa5ec8HUHQbV/mpikYqs0JR3kWPWRStH5FXlKSYxmVW4nlumZnXX2aLJilnFrAknhL0wuOSumjdkthX6tzLj7FWXkzdHgsHvqPZX6Mtad1RGXuYcGmc0B6Z7JFmxxR5vfJOIbjpV1ImUDBIAZMgfexW/ZZuqxhQClGSliOJ0J4inT2pTZaKR4ZXoi8uowED7cPNbQ+g+9ZI0p+jfyaaDRt9Y+5BLD9k2+Gb+rIgxgPy1k/CQ/LnFx/v2geV0zymqowu3gSoHFAb/XJNdBJx61gZZ8mcu4klfZ/O+jw2k8tBW+CSzXqUxu15scYsvER3HnzJTiRAKdSTnkIn5p9iASzO0I0LQl7sFBe6lrFoCT67rdNxKaCc=
