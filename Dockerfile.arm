@@ -2,7 +2,7 @@ FROM arm32v7/debian:9.8-slim
 
 LABEL maintainer "Casey Davenport <casey@tigera.io>"
 
-ADD bin/arm32v7/ /opt/cni/bin/
+ADD bin/arm/ /opt/cni/bin/
 ADD k8s-install/scripts/install-cni.sh /install-cni.sh
 ADD k8s-install/scripts/calico.conf.default /calico.conf.tmp
 
